@@ -271,10 +271,6 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2031492511]
 zoom = Vector2(7, 7)
 
-[node name="HealthBar" parent="." unique_id=1516574594 instance=ExtResource("4_cb5na")]
-unique_name_in_owner = true
-position = Vector2(-76, 41)
-
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=666826409]
 unique_name_in_owner = true
 position = Vector2(8, -19)
@@ -369,3 +365,7 @@ collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=113079340]
 shape = SubResource("WorldBoundaryShape2D_5aext")
+
+[node name="HealthBar" parent="." unique_id=1516574594 instance=ExtResource("4_cb5na")]
+unique_name_in_owner = true
+position = Vector2(-76, 41)
