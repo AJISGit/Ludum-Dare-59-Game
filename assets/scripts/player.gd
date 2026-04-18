@@ -42,6 +42,10 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(0.0, 0.0)
 
 	if health > max_health: health = max_health
+	if health < 0: health = 0
+
+	if health <= 0: get_tree().paused = true
+
 	health_bar.update_icons(health, max_health)
 	
 	if state != player_state.frozen:
