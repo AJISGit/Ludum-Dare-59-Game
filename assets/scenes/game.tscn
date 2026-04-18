@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="4_cb5na"]
 [ext_resource type="Script" uid="uid://gx8nwdtow5ab" path="res://assets/scripts/enemy.gd" id="5_5aext"]
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
+[ext_resource type="Script" uid="uid://c0ppcyvuimj81" path="res://assets/scripts/controller.gd" id="6_5aext"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3ryk"]
 atlas = ExtResource("5_j62u1")
@@ -179,7 +180,10 @@ size = Vector2(9.803608, 10.654805)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
 unique_name_in_owner = true
+position = Vector2(9, 32)
 collision_mask = 3
+platform_on_leave = 2
+platform_floor_layers = 4294967040
 script = ExtResource("2_5gf0t")
 speed = 2500.0
 
@@ -212,6 +216,8 @@ position = Vector2(-76, 41)
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=666826409]
 position = Vector2(8, -19)
 collision_layer = 2
+platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("5_5aext")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=537977992]
@@ -227,3 +233,27 @@ shape = SubResource("RectangleShape2D_5aext")
 [node name="ShootTimer" type="Timer" parent="Enemy" unique_id=1028357147]
 wait_time = 0.5
 autostart = true
+
+[node name="Controller" type="CharacterBody2D" parent="." unique_id=331929211]
+unique_name_in_owner = true
+position = Vector2(-26, 7)
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("6_5aext")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Controller" unique_id=827638811]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_j62u1")
+animation = &"IdleFront"
+autoplay = "IdleFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Controller" unique_id=2119981559]
+scale = Vector2(1.2240393, 1.1262527)
+shape = SubResource("RectangleShape2D_5aext")
+
+[node name="MoveTimer" type="Timer" parent="Controller" unique_id=1160695199]
+wait_time = 0.5
+one_shot = true

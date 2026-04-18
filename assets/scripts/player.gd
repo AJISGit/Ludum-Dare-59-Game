@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var health: int = 3 
 @export var max_health: int = 3 
 
+@export_group("Controller")
+@export var max_distance: float = 100
+
 
 enum player_state {
 	walking,
@@ -48,6 +51,11 @@ func _physics_process(delta: float) -> void:
 
 	health_bar.update_icons(health, max_health)
 	
+	if position.distance_to(%Controller.position) > 100:
+		state = player_state.frozen
+	else:
+		state = player_state.idle
+
 	if state != player_state.frozen:
 		state = player_state.idle
 		
@@ -100,6 +108,7 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+	queue_redraw()
 
 
 
@@ -116,3 +125,31 @@ func play_idle_animation() -> void:
 	elif direction == player_direction.left:
 		sprite.flip_h = false 
 		sprite.play("IdleSide")
+
+	
+
+
+func _draw() -> void:
+	
+	var distance: float = position.distance_to(%Controller.position)
+
+	var from: Vector2 = global_position
+	var to: Vector2 = %Controller.global_position - global_position 
+	from = from.normalized()
+	to = to.normalized() * distance
+
+	var color: Color
+
+
+
+	if distance >= max_distance / 1.2:
+		color = Color8(255, 0, 0)
+	elif distance >= max_distance / 2:
+		color = Color8(255, 255, 0)
+	else:
+		color = Color8(255, 255, 255)
+
+	
+
+
+	draw_line(from, to, color, 0.1, false)
