@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const BULLET_RESOURCE: PackedScene = preload("res://assets/scenes/bullet.tscn")
-
+@export var health = 3
 
 func _on_bullet_hit(body: Node2D):
 	if (body == %Player):
@@ -19,3 +19,9 @@ func _on_shoot_timer_timeout():
 
 func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timer_timeout)
+
+
+func _process(_delta: float) -> void:
+	$Label.text = "Health: " + str(health)
+	if health <= 0:
+		queue_free()

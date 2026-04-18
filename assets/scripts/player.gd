@@ -31,14 +31,27 @@ var direction: player_direction = player_direction.back
 
 
 @onready var sprite: AnimatedSprite2D = $Sprite
-@onready var health_bar: HealthBar = %HealthBar
+@onready var health_bar: HealthBar = %HealthBar	
+@onready var shoot_timer: Timer = $ShootTimer
 
 
 var play_idle_animation_while_frozen: bool = true
+var shooting: bool = false
+var can_shoot: bool = true
+
+var BULLET_RESOURCE: PackedScene = preload("res://assets/scenes/bullet.tscn")
 
 
 func _ready() -> void:
 	health_bar.update_icons(health, max_health)
+	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+
+func _on_shoot_timer_timeout():
+	can_shoot = true
+
+func _on_bullet_hit(body: Node2D):
+	if body == %Enemy:
+		body.health -= 1
 
 func _physics_process(delta: float) -> void:
 
@@ -121,9 +134,42 @@ func _physics_process(delta: float) -> void:
 		if play_idle_animation_while_frozen:
 			play_idle_animation()
 
+	if (shooting) and (state != player_state.frozen):
+		shoot()
+
 
 	move_and_slide()
 	queue_redraw()
+
+
+
+
+func _input(event: InputEvent) -> void:
+	# Let player shoot bullets
+	if event.is_action_pressed("Shoot"):
+		shooting = true
+	elif event.is_action_released("Shoot"):
+		shooting = false
+
+
+
+func shoot():
+
+	if !can_shoot: return
+
+	var bullet: Bullet = BULLET_RESOURCE.instantiate()
+	bullet.position = position
+	bullet.speed = 100
+	bullet.look_at(get_global_mouse_position())
+	bullet.hit.connect(_on_bullet_hit)
+	bullet.set_collision_layer_value(3, true)
+	bullet.set_collision_layer_value(1, false)
+	bullet.set_collision_mask_value(3, true)
+	bullet.set_collision_mask_value(1, false)
+
+	$"../".add_child(bullet)
+	can_shoot = false
+	shoot_timer.start()
 
 
 

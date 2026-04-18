@@ -106,9 +106,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3w2km"]
 size = Vector2(4, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gf0t"]
-size = Vector2(30, 4)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb5na"]
 atlas = ExtResource("2_dis88")
 region = Rect2(0, 0, 128, 128)
@@ -176,6 +173,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aext"]
 size = Vector2(9.803608, 10.654805)
 
+[sub_resource type="LabelSettings" id="LabelSettings_5aext"]
+
 [node name="Game" type="Node2D" unique_id=1670098701]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
@@ -196,15 +195,9 @@ autoplay = "IdleFront"
 scale = Vector2(1.2240393, 1.1262527)
 shape = SubResource("RectangleShape2D_3w2km")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=942131719]
-position = Vector2(8, 18)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=831815138]
-scale = Vector2(0.237659, 0.029109312)
-texture = ExtResource("2_dis88")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=558007463]
-shape = SubResource("RectangleShape2D_5gf0t")
+[node name="ShootTimer" type="Timer" parent="Player" unique_id=1387723270]
+wait_time = 0.25
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2031492511]
 zoom = Vector2(7, 7)
@@ -214,11 +207,14 @@ unique_name_in_owner = true
 position = Vector2(-76, 41)
 
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=666826409]
+unique_name_in_owner = true
 position = Vector2(8, -19)
-collision_layer = 2
+collision_layer = 6
+collision_mask = 5
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 script = ExtResource("5_5aext")
+health = 100
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=537977992]
 scale = Vector2(0.1, 0.1)
@@ -233,6 +229,15 @@ shape = SubResource("RectangleShape2D_5aext")
 [node name="ShootTimer" type="Timer" parent="Enemy" unique_id=1028357147]
 wait_time = 0.5
 autostart = true
+
+[node name="Label" type="Label" parent="Enemy" unique_id=1868894294]
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 66.0
+offset_bottom = 14.0
+scale = Vector2(0.1, 0.1)
+text = "Health: 3"
+label_settings = SubResource("LabelSettings_5aext")
 
 [node name="Controller" type="CharacterBody2D" parent="." unique_id=331929211]
 unique_name_in_owner = true
