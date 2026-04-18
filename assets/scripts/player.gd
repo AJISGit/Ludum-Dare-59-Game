@@ -5,8 +5,8 @@ extends CharacterBody2D
 @export var speed: float = 300.0
 
 @export_group("Health")
-@export var health: int = 100
-@export var max_health: int = 100
+@export var health: int = 3 
+@export var max_health: int = 3 
 
 
 enum player_state {
@@ -27,11 +27,14 @@ var direction: player_direction = player_direction.back
 
 
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var health_bar: HealthBar = %HealthBar
 
 
 var play_idle_animation_while_frozen: bool = true
 
 
+func _ready() -> void:
+	health_bar.update_icons(health, max_health)
 
 func _physics_process(delta: float) -> void:
 
@@ -39,9 +42,12 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(0.0, 0.0)
 
 	if health > max_health: health = max_health
+	health_bar.update_icons(health, max_health)
 	
 	if state != player_state.frozen:
 		state = player_state.idle
+		
+
 	
 	#### Movement ####
 	if Input.is_action_pressed("WalkLeft") and state != player_state.frozen:

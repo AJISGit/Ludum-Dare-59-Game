@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ducqxpi7obstd"]
+
+[ext_resource type="Script" uid="uid://bmovgbcyminhn" path="res://assets/scripts/healthbar.gd" id="1_7rubd"]
+[ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="1_quyqi"]
+
+[node name="HealthBar" type="Node2D" unique_id=76755757]
+script = ExtResource("1_7rubd")
+metadata/_custom_type_script = "uid://bmovgbcyminhn"
+
+[node name="Icons" type="Node" parent="." unique_id=1616650003]
+
+[node name="Icon1" type="Sprite2D" parent="." unique_id=908643048]
+self_modulate = Color(18.892157, 0, 0, 1)
+texture = ExtResource("1_quyqi")
+region_enabled = true
+region_rect = Rect2(0, 10, 11, 10)
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=1647339580]
+self_modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(11.5, 0)
+texture = ExtResource("1_quyqi")
+region_enabled = true
+region_rect = Rect2(0, 10, 11, 10)
+
+[node name="Icon3" type="Sprite2D" parent="." unique_id=1490500421]
+self_modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(23, 0)
+texture = ExtResource("1_quyqi")
+region_enabled = true
+region_rect = Rect2(0, 10, 11, 10)

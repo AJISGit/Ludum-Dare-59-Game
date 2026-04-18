@@ -3,13 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://dkgeca8fmektb" path="res://assets/scenes/guy.tscn" id="1_cb66b"]
 [ext_resource type="Script" uid="uid://bb565sewi8c5o" path="res://assets/scripts/player.gd" id="2_5gf0t"]
 [ext_resource type="Texture2D" uid="uid://es4t2h0xu03e" path="res://icon.svg" id="2_dis88"]
+[ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="4_cb5na"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gf0t"]
 size = Vector2(30, 4)
 
 [node name="Game" type="Node2D" unique_id=1670098701]
 
-[node name="Guy" parent="." unique_id=1440786418 instance=ExtResource("1_cb66b")]
+[node name="Player" parent="." unique_id=1440786418 instance=ExtResource("1_cb66b")]
+unique_name_in_owner = true
 script = ExtResource("2_5gf0t")
 speed = 2500.0
 
@@ -25,3 +27,7 @@ shape = SubResource("RectangleShape2D_5gf0t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2031492511]
 zoom = Vector2(7, 7)
+
+[node name="HealthBar" parent="." unique_id=1516574594 instance=ExtResource("4_cb5na")]
+unique_name_in_owner = true
+position = Vector2(-76, 41)
