@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export_group("Movement")
 @export var speed: float = 300.0
+@onready var normal_speed = speed
 
 @export_group("Health")
 @export var health: int = 3 
@@ -41,9 +42,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 
-	#### Reset Values ####
+	# Reset Values
 	velocity = Vector2(0.0, 0.0)
 
+
+	# Make sure health is in the correct range
 	if health > max_health: health = max_health
 	if health < 0: health = 0
 
@@ -51,7 +54,19 @@ func _physics_process(delta: float) -> void:
 
 	health_bar.update_icons(health, max_health)
 	
-	if position.distance_to(%Controller.position) > 100:
+	# Change player based on distance to controller
+
+	var distance: float = position.distance_to(%Controller.position)
+	
+	if distance >= max_distance / 1.2:
+		speed = normal_speed / 3 
+	elif distance >= max_distance / 2:
+		speed = normal_speed / 1.5
+	else:
+		speed = normal_speed
+
+
+	if distance > max_distance:
 		state = player_state.frozen
 	else:
 		state = player_state.idle
