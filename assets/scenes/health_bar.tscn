@@ -13,18 +13,18 @@ metadata/_custom_type_script = "uid://bmovgbcyminhn"
 self_modulate = Color(18.892157, 0, 0, 1)
 texture = ExtResource("1_quyqi")
 region_enabled = true
-region_rect = Rect2(0, 10, 11, 10)
+region_rect = Rect2(0, 11, 11, 10)
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1647339580]
 self_modulate = Color(18.892157, 0, 0, 1)
 position = Vector2(11.5, 0)
 texture = ExtResource("1_quyqi")
 region_enabled = true
-region_rect = Rect2(0, 10, 11, 10)
+region_rect = Rect2(0, 11, 11, 10)
 
 [node name="Icon3" type="Sprite2D" parent="." unique_id=1490500421]
 self_modulate = Color(18.892157, 0, 0, 1)
 position = Vector2(23, 0)
 texture = ExtResource("1_quyqi")
 region_enabled = true
-region_rect = Rect2(0, 10, 11, 10)
+region_rect = Rect2(0, 11, 11, 10)

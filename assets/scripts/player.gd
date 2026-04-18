@@ -132,7 +132,8 @@ func _physics_process(delta: float) -> void:
 
 	elif state == player_state.frozen:
 		if play_idle_animation_while_frozen:
-			play_idle_animation()
+			sprite.play("Dead")	
+			sprite.flip_h = false
 
 	if (shooting) and (state != player_state.frozen):
 		shoot()
