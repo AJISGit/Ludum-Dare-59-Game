@@ -40,6 +40,10 @@ var shooting: bool = false
 var can_shoot: bool = true
 
 var BULLET_RESOURCE: PackedScene = preload("res://assets/scenes/bullet.tscn")
+var LASER_SHOOT_NOISE = preload("res://assets/sounds/shoot.wav")
+var LASER_ALT_SHOOT_NOISE = preload("res://assets/sounds/shoot2.wav")
+
+var alt_shoot_noise: bool = false
 
 
 func _ready() -> void:
@@ -174,6 +178,20 @@ func shoot():
 	bullet.set_collision_mask_value(1, false)
 
 	$"../".add_child(bullet)
+
+	if !alt_shoot_noise:
+		%AudioPlayer.set_stream(LASER_SHOOT_NOISE)
+		%AudioPlayer.stop()
+		%AudioPlayer.play()
+	else:
+		%AudioPlayer2.set_stream(LASER_ALT_SHOOT_NOISE)
+		%AudioPlayer2.stop()
+		%AudioPlayer2.play()
+	
+	alt_shoot_noise = !alt_shoot_noise
+
+
+
 	can_shoot = false
 	shoot_timer.start()
 

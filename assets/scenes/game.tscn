@@ -325,3 +325,9 @@ scale = Vector2(500, 500)
 texture = ExtResource("5_j62u1")
 region_enabled = true
 region_rect = Rect2(49.162178, 27.249664, 0.5423317, 0.44189835)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1097482171]
+unique_name_in_owner = true
+
+[node name="AudioPlayer2" type="AudioStreamPlayer2D" parent="." unique_id=1269924424]
+unique_name_in_owner = true
