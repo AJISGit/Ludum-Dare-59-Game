@@ -37,7 +37,7 @@ func cshoot_phase():
 	$ShootTimer.wait_time = 0.05
 	var bullet: Bullet = BULLET_RESOURCE.instantiate()
 	bullet.hit.connect(_on_bullet_hit)
-	bullet.position = position
+	bullet.position = $LeftGun.global_position
 	bullet.speed = 40
 	bullet.rotation_degrees = bullet_dir
 	$"../".add_child(bullet)
@@ -61,7 +61,7 @@ func aim_phase():
 	$ShootTimer.wait_time = 0.35
 	var bullet: Bullet = BULLET_RESOURCE.instantiate()
 	bullet.hit.connect(_on_bullet_hit)
-	bullet.position = position
+	bullet.position = $RightGun.global_position
 	bullet.speed = 75
 	bullet.look_at(%Player.position) 
 	$"../".add_child(bullet)
@@ -70,7 +70,7 @@ func aim_phase():
 
 	var bullet2: Bullet = BULLET_RESOURCE.instantiate()
 	bullet2.hit.connect(_on_bullet_hit)
-	bullet2.position = position
+	bullet2.position = $LeftGun.global_position
 	bullet2.speed = 75
 	bullet2.look_at(%Player.position) 
 	bullet2.rotation_degrees += 30
@@ -80,7 +80,7 @@ func aim_phase():
 
 	var bullet3: Bullet = BULLET_RESOURCE.instantiate()
 	bullet3.hit.connect(_on_bullet_hit)
-	bullet3.position = position
+	bullet3.position = $RightGun.global_position
 	bullet3.speed = 75
 	bullet3.look_at(%Player.position) 
 	bullet3.rotation_degrees -= 30
@@ -106,14 +106,14 @@ func chaos_phase():
 	$ShootTimer.wait_time = 0.05
 	var bullet: Bullet = BULLET_RESOURCE.instantiate()
 	bullet.hit.connect(_on_bullet_hit)
-	bullet.position = position
+	bullet.position = $LeftGun.global_position
 	bullet.speed = 30 
 	bullet.rotation_degrees = chaos_dir1
 	$"../".add_child(bullet)
 
 	var bullet2: Bullet = BULLET_RESOURCE.instantiate()
 	bullet2.hit.connect(_on_bullet_hit)
-	bullet2.position = position
+	bullet2.position = $RightGun.global_position
 	bullet2.speed = 15 
 	bullet2.rotation_degrees = chaos_dir2
 	$"../".add_child(bullet2)

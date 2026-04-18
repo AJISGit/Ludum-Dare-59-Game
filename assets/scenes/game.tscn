@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dw5oejlonotl5"]
 
 [ext_resource type="Script" uid="uid://bb565sewi8c5o" path="res://assets/scripts/player.gd" id="2_5gf0t"]
-[ext_resource type="Texture2D" uid="uid://es4t2h0xu03e" path="res://icon.svg" id="2_dis88"]
 [ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="4_cb5na"]
 [ext_resource type="Script" uid="uid://gx8nwdtow5ab" path="res://assets/scripts/enemy.gd" id="5_5aext"]
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
@@ -120,104 +119,30 @@ animations = [{
 radius = 1.633935
 height = 5.327404
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j3ryk"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(12, 0, 5, 9)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5aext"]
-atlas = ExtResource("2_dis88")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52c1f"]
 atlas = ExtResource("5_j62u1")
-region = Rect2(6, 0, 5, 9)
+region = Rect2(24, 15, 15, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s66x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cnnv"]
 atlas = ExtResource("5_j62u1")
-region = Rect2(30, 0, 5, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3kput"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(48, 0, 5, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4v27t"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(18, 0, 5, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qld4k"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(36, 0, 5, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_68fpa"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(24, 0, 5, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6iqg"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(42, 0, 5, 9)
+region = Rect2(40, 15, 15, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3w2km"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j3ryk")
-}],
-"loop": true,
-"name": &"IdleBack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5aext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cnnv")
 }],
 "loop": true,
 "name": &"IdleFront",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_52c1f")
-}],
-"loop": true,
-"name": &"IdleSide",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2s66x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3kput")
-}],
-"loop": true,
-"name": &"WalkBack",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4v27t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qld4k")
-}],
-"loop": true,
-"name": &"WalkFront",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_68fpa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6iqg")
-}],
-"loop": true,
-"name": &"WalkSide",
-"speed": 4.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aext"]
-size = Vector2(9.803608, 10.654805)
+size = Vector2(13.071476, 15.982206)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5aext"]
 
@@ -291,12 +216,14 @@ script = ExtResource("5_5aext")
 health = 100
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=537977992]
-scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3w2km")
 animation = &"IdleFront"
 autoplay = "IdleFront"
+frame = 1
+frame_progress = 0.46612114
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=861771111]
+visible = false
 scale = Vector2(1.2240393, 1.1262527)
 shape = SubResource("RectangleShape2D_5aext")
 
@@ -318,6 +245,12 @@ label_settings = SubResource("LabelSettings_5aext")
 [node name="SwitchTimer" type="Timer" parent="Enemy" unique_id=1131888834]
 wait_time = 3.0
 one_shot = true
+
+[node name="LeftGun" type="Node2D" parent="Enemy" unique_id=599719766]
+position = Vector2(-6, 4)
+
+[node name="RightGun" type="Node2D" parent="Enemy" unique_id=1743327105]
+position = Vector2(6, 4)
 
 [node name="Controller" type="CharacterBody2D" parent="." unique_id=331929211]
 unique_name_in_owner = true
@@ -387,6 +320,7 @@ scale = Vector2(0.5, 0.5)
 unique_name_in_owner = true
 z_index = 4096
 material = SubResource("ShaderMaterial_3w2km")
+position = Vector2(-3, 3)
 scale = Vector2(500, 500)
 texture = ExtResource("5_j62u1")
 region_enabled = true
