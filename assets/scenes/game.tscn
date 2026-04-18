@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://gx8nwdtow5ab" path="res://assets/scripts/enemy.gd" id="5_5aext"]
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
 [ext_resource type="Script" uid="uid://c0ppcyvuimj81" path="res://assets/scripts/controller.gd" id="6_5aext"]
+[ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_3w2km"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jdip"]
 atlas = ExtResource("5_j62u1")
@@ -244,6 +245,10 @@ animations = [{
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5aext"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3w2km"]
+shader = ExtResource("7_3w2km")
+shader_parameter/noise_intensity = 0.0
+
 [node name="Game" type="Node2D" unique_id=1670098701]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
@@ -377,3 +382,12 @@ unique_name_in_owner = true
 z_index = 4096
 position = Vector2(-77, -42)
 scale = Vector2(0.5, 0.5)
+
+[node name="Static" type="Sprite2D" parent="." unique_id=958981988]
+unique_name_in_owner = true
+z_index = 4096
+material = SubResource("ShaderMaterial_3w2km")
+scale = Vector2(500, 500)
+texture = ExtResource("5_j62u1")
+region_enabled = true
+region_rect = Rect2(49.162178, 27.249664, 0.5423317, 0.44189835)

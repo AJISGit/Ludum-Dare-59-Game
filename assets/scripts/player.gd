@@ -63,7 +63,8 @@ func _physics_process(delta: float) -> void:
 	if health > max_health: health = max_health
 	if health < 0: health = 0
 
-	if health <= 0: get_tree().paused = true
+	if health <= 0:
+		get_tree().paused = true
 
 	health_bar.update_icons(health, max_health)
 	
@@ -80,6 +81,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if distance > max_distance:
+		%Static.get_material().set_shader_parameter("noise_intensity", 1.0)
 		state = player_state.frozen
 	else:
 		state = player_state.idle
@@ -140,7 +142,10 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
-	queue_redraw()
+
+	if (state != player_state.frozen):
+		%Static.get_material().set_shader_parameter("noise_intensity", distance / 125.0)
+
 
 
 
@@ -189,29 +194,3 @@ func play_idle_animation() -> void:
 		sprite.play("IdleSide")
 
 	
-
-
-func _draw() -> void:
-	
-	var distance: float = position.distance_to(%Controller.position)
-
-	var from: Vector2 = global_position
-	var to: Vector2 = %Controller.global_position - global_position 
-	from = from.normalized()
-	to = to.normalized() * distance
-
-	var color: Color
-
-
-
-	if distance >= max_distance / 1.2:
-		color = Color8(255, 0, 0)
-	elif distance >= max_distance / 2:
-		color = Color8(255, 255, 0)
-	else:
-		color = Color8(255, 255, 255)
-
-	
-
-
-	draw_line(from, to, color, 0.1, false)
