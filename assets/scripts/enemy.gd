@@ -9,7 +9,7 @@ const BULLET_RESOURCE: PackedScene = preload("res://assets/scenes/bullet.tscn")
 func _on_move_timer_timeout():
 	move_timer.wait_time = randf_range(0.0, 2.0)
 
-	var rand_num = randi_range(0, 2)
+	var rand_num = randi_range(0, 6)
 
 	
 	if rand_num == 0:
@@ -23,6 +23,8 @@ func _on_move_timer_timeout():
 	elif rand_num == 4:
 		velocity.x += randi_range(-15, 15)
 		velocity.y += randi_range(-15, 15)
+	elif rand_num == 5:
+		velocity = Vector2(0, 0)
 	else:
 		velocity.x = -velocity.x
 		velocity.y = -velocity.y
@@ -55,8 +57,21 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 
-	velocity.x = clampf(velocity.x, -10.0, 10.0)
-	velocity.y = clampf(velocity.y, -10.0, 10.0)
+	if velocity.x < 0:
+		velocity.x = -10
+	elif velocity.x > 0:
+		velocity.x = 10
+	else:
+		velocity.x = 0
+
+
+	if velocity.y < 0:
+		velocity.y = -10
+	elif velocity.y > 0:
+		velocity.y = 10
+	else:
+		velocity.y = 0
+
 
 	$Label.text = "Health: " + str(health)
 	if health <= 0:
