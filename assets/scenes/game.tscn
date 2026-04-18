@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dw5oejlonotl5"]
+
+[ext_resource type="PackedScene" uid="uid://dkgeca8fmektb" path="res://assets/scenes/guy.tscn" id="1_cb66b"]
+[ext_resource type="Script" uid="uid://bb565sewi8c5o" path="res://assets/scripts/player.gd" id="2_5gf0t"]
+[ext_resource type="Texture2D" uid="uid://es4t2h0xu03e" path="res://icon.svg" id="2_dis88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gf0t"]
+size = Vector2(30, 4)
+
+[node name="Game" type="Node2D" unique_id=1670098701]
+
+[node name="Guy" parent="." unique_id=1440786418 instance=ExtResource("1_cb66b")]
+script = ExtResource("2_5gf0t")
+speed = 2500.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=942131719]
+position = Vector2(8, 18)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=831815138]
+scale = Vector2(0.237659, 0.029109312)
+texture = ExtResource("2_dis88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=558007463]
+shape = SubResource("RectangleShape2D_5gf0t")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2031492511]
+zoom = Vector2(7, 7)
