@@ -175,12 +175,15 @@ size = Vector2(9.803608, 10.654805)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5aext"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5aext"]
+
 [node name="Game" type="Node2D" unique_id=1670098701]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
 unique_name_in_owner = true
 position = Vector2(9, 32)
 collision_mask = 3
+slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("2_5gf0t")
@@ -211,8 +214,10 @@ unique_name_in_owner = true
 position = Vector2(8, -19)
 collision_layer = 6
 collision_mask = 5
+slide_on_ceiling = false
 platform_on_leave = 2
-platform_floor_layers = 4294901760
+platform_floor_layers = 4294967040
+platform_wall_layers = 65280
 script = ExtResource("5_5aext")
 health = 100
 
@@ -239,12 +244,15 @@ scale = Vector2(0.1, 0.1)
 text = "Health: 3"
 label_settings = SubResource("LabelSettings_5aext")
 
+[node name="MoveTimer" type="Timer" parent="Enemy" unique_id=156837261]
+
 [node name="Controller" type="CharacterBody2D" parent="." unique_id=331929211]
 unique_name_in_owner = true
 position = Vector2(-26, 7)
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
 collision_mask = 3
+slide_on_ceiling = false
 platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("6_5aext")
@@ -262,3 +270,38 @@ shape = SubResource("RectangleShape2D_5aext")
 [node name="MoveTimer" type="Timer" parent="Controller" unique_id=1160695199]
 wait_time = 0.5
 one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=359879348]
+position = Vector2(0, 46)
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=411228974]
+shape = SubResource("WorldBoundaryShape2D_5aext")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=306260774]
+position = Vector2(-83, 1)
+rotation = 1.5707964
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=541201017]
+shape = SubResource("WorldBoundaryShape2D_5aext")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1513944830]
+position = Vector2(83, 2)
+rotation = 4.712389
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=119785049]
+shape = SubResource("WorldBoundaryShape2D_5aext")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=804344820]
+position = Vector2(0, -46)
+rotation = 3.1415927
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=113079340]
+shape = SubResource("WorldBoundaryShape2D_5aext")
