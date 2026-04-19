@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://cm571t762vrye"]
+
+[ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="1_tjd8y"]
+[ext_resource type="Script" uid="uid://bb565sewi8c5o" path="res://assets/scripts/player.gd" id="2_0kt67"]
+[ext_resource type="Script" uid="uid://gx8nwdtow5ab" path="res://assets/scripts/enemy.gd" id="3_lka7q"]
+[ext_resource type="FontFile" uid="uid://bk4r7qj4iv3p6" path="res://assets/fonts/Acme 9 Regular.ttf" id="4_68jgb"]
+[ext_resource type="Script" uid="uid://c0ppcyvuimj81" path="res://assets/scripts/controller.gd" id="5_nwww1"]
+[ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="6_7e3sx"]
+[ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_67jys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jdip"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(54, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2t1h"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(12, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw37s"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(0, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phsto"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(6, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkhv0"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(30, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i358u"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(48, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2rys"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(18, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc420"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(36, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc0sw"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(24, 0, 5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqk1v"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(42, 0, 5, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b6ly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jdip")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2t1h")
+}],
+"loop": true,
+"name": &"IdleBack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw37s")
+}],
+"loop": true,
+"name": &"IdleFront",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phsto")
+}],
+"loop": true,
+"name": &"IdleSide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkhv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i358u")
+}],
+"loop": true,
+"name": &"WalkBack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2rys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc420")
+}],
+"loop": true,
+"name": &"WalkFront",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc0sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqk1v")
+}],
+"loop": true,
+"name": &"WalkSide",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rwxs"]
+radius = 1.633935
+height = 5.327404
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aext"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(24, 15, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cnnv"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(40, 15, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t33da"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cnnv")
+}],
+"loop": true,
+"name": &"IdleFront",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vulla"]
+size = Vector2(13.071476, 15.982206)
+
+[sub_resource type="LabelSettings" id="LabelSettings_71pkm"]
+font = ExtResource("4_68jgb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w2km"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(0, 22, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfsp4"]
+atlas = ExtResource("1_tjd8y")
+region = Rect2(12, 22, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53275"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w2km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfsp4")
+}],
+"loop": true,
+"name": &"IdleFront",
+"speed": 1.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rhoc4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gldp8"]
+shader = ExtResource("7_67jys")
+shader_parameter/noise_intensity = 0.0
+
+[node name="Level" type="Node2D" unique_id=866085146]
+
+[node name="Background" type="Parallax2D" parent="." unique_id=1736174746]
+repeat_size = Vector2(16, 16)
+repeat_times = 20
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1777309151]
+texture = ExtResource("1_tjd8y")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1551121534]
+unique_name_in_owner = true
+position = Vector2(9, 32)
+collision_mask = 3
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("2_0kt67")
+speed = 2500.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=794286745]
+sprite_frames = SubResource("SpriteFrames_2b6ly")
+animation = &"Dead"
+autoplay = "IdleFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=175886519]
+position = Vector2(0, -2)
+scale = Vector2(1.2240393, 1.1262527)
+shape = SubResource("CapsuleShape2D_2rwxs")
+
+[node name="ShootTimer" type="Timer" parent="Player" unique_id=737742742]
+wait_time = 0.25
+one_shot = true
+
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1933547170]
+unique_name_in_owner = true
+position = Vector2(8, -19)
+collision_layer = 6
+collision_mask = 5
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+platform_wall_layers = 65280
+script = ExtResource("3_lka7q")
+health = 100
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=1850366620]
+sprite_frames = SubResource("SpriteFrames_t33da")
+animation = &"IdleFront"
+autoplay = "IdleFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=938888481]
+visible = false
+scale = Vector2(1.2240393, 1.1262527)
+shape = SubResource("RectangleShape2D_vulla")
+
+[node name="ShootTimer" type="Timer" parent="Enemy" unique_id=1098104455]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="Enemy" unique_id=1852766750]
+offset_left = -5.0
+offset_top = -11.0
+offset_right = 103.0
+offset_bottom = 21.0
+scale = Vector2(0.08, 0.08)
+text = "Health: 3"
+label_settings = SubResource("LabelSettings_71pkm")
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveTimer" type="Timer" parent="Enemy" unique_id=1701889231]
+
+[node name="SwitchTimer" type="Timer" parent="Enemy" unique_id=1609800652]
+wait_time = 3.0
+one_shot = true
+
+[node name="LeftGun" type="Node2D" parent="Enemy" unique_id=1675216753]
+position = Vector2(-6, 4)
+
+[node name="RightGun" type="Node2D" parent="Enemy" unique_id=1698291843]
+position = Vector2(6, 4)
+
+[node name="Controller" type="CharacterBody2D" parent="." unique_id=613376685]
+unique_name_in_owner = true
+position = Vector2(-26, 7)
+collision_layer = 2
+collision_mask = 2
+slide_on_ceiling = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("5_nwww1")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Controller" unique_id=722291979]
+sprite_frames = SubResource("SpriteFrames_53275")
+animation = &"IdleFront"
+autoplay = "IdleFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Controller" unique_id=527862475]
+scale = Vector2(1.2240393, 1.1262527)
+shape = SubResource("RectangleShape2D_vulla")
+
+[node name="MoveTimer" type="Timer" parent="Controller" unique_id=730079098]
+wait_time = 0.5
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1809392030]
+position = Vector2(0, 44)
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1456216787]
+shape = SubResource("WorldBoundaryShape2D_rhoc4")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1547250778]
+position = Vector2(-80, 2)
+rotation = 1.5707964
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=318734706]
+shape = SubResource("WorldBoundaryShape2D_rhoc4")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=240555285]
+position = Vector2(80, 2)
+rotation = 4.712389
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1424088829]
+shape = SubResource("WorldBoundaryShape2D_rhoc4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=637706748]
+position = Vector2(0, -44)
+rotation = 3.1415927
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1521308320]
+shape = SubResource("WorldBoundaryShape2D_rhoc4")
+
+[node name="HealthBar" parent="." unique_id=76755757 instance=ExtResource("6_7e3sx")]
+unique_name_in_owner = true
+z_index = 4096
+position = Vector2(-74, -38)
+scale = Vector2(0.5, 0.5)
+
+[node name="Static" type="Sprite2D" parent="." unique_id=301928129]
+unique_name_in_owner = true
+z_index = 4096
+material = SubResource("ShaderMaterial_gldp8")
+position = Vector2(-3, 3)
+scale = Vector2(500, 500)
+texture = ExtResource("1_tjd8y")
+region_enabled = true
+region_rect = Rect2(49.162178, 27.249664, 0.5423317, 0.44189835)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1824286016]
+unique_name_in_owner = true
+
+[node name="AudioPlayer2" type="AudioStreamPlayer2D" parent="." unique_id=736464883]
+unique_name_in_owner = true

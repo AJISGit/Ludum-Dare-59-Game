@@ -1,343 +1,62 @@
 [gd_scene format=3 uid="uid://dw5oejlonotl5"]
 
-[ext_resource type="Script" uid="uid://bb565sewi8c5o" path="res://assets/scripts/player.gd" id="2_5gf0t"]
-[ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="4_cb5na"]
-[ext_resource type="Script" uid="uid://gx8nwdtow5ab" path="res://assets/scripts/enemy.gd" id="5_5aext"]
+[ext_resource type="Script" uid="uid://btmjnsfc5ubqx" path="res://assets/scripts/game.gd" id="1_wfsp4"]
+[ext_resource type="Script" uid="uid://claux1w5paxry" path="res://assets/scripts/main_menu.gd" id="2_5gf0t"]
+[ext_resource type="FontFile" uid="uid://bk4r7qj4iv3p6" path="res://assets/fonts/Acme 9 Regular.ttf" id="4_3w2km"]
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
-[ext_resource type="Script" uid="uid://c0ppcyvuimj81" path="res://assets/scripts/controller.gd" id="6_5aext"]
 [ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_3w2km"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jdip"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(54, 0, 5, 11)
+[sub_resource type="LabelSettings" id="LabelSettings_wfsp4"]
+font = ExtResource("4_3w2km")
+font_size = 8
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2t1h"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(12, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pw37s"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(0, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phsto"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(6, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkhv0"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(30, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i358u"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(48, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2rys"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(18, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fc420"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(36, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kc0sw"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(24, 0, 5, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqk1v"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(42, 0, 5, 11)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5aext"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5jdip")
-}],
-"loop": true,
-"name": &"Dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2t1h")
-}],
-"loop": true,
-"name": &"IdleBack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pw37s")
-}],
-"loop": true,
-"name": &"IdleFront",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phsto")
-}],
-"loop": true,
-"name": &"IdleSide",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pkhv0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i358u")
-}],
-"loop": true,
-"name": &"WalkBack",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s2rys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fc420")
-}],
-"loop": true,
-"name": &"WalkFront",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kc0sw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqk1v")
-}],
-"loop": true,
-"name": &"WalkSide",
-"speed": 4.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5aext"]
-radius = 1.633935
-height = 5.327404
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5aext"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(24, 15, 15, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cnnv"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(40, 15, 15, 18)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3w2km"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5aext")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cnnv")
-}],
-"loop": true,
-"name": &"IdleFront",
-"speed": 1.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aext"]
-size = Vector2(13.071476, 15.982206)
-
-[sub_resource type="LabelSettings" id="LabelSettings_5aext"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3w2km"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(0, 22, 11, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfsp4"]
-atlas = ExtResource("5_j62u1")
-region = Rect2(12, 22, 11, 11)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j62u1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3w2km")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wfsp4")
-}],
-"loop": true,
-"name": &"IdleFront",
-"speed": 1.0
-}]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5aext"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3w2km"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j62u1"]
 shader = ExtResource("7_3w2km")
-shader_parameter/noise_intensity = 0.0
+shader_parameter/noise_intensity = 0.50000002375
 
 [node name="Game" type="Node2D" unique_id=1670098701]
+script = ExtResource("1_wfsp4")
 
-[node name="Background" type="Parallax2D" parent="." unique_id=1873950338]
+[node name="MainMenu" type="Node" parent="." unique_id=51035516]
+unique_name_in_owner = true
+script = ExtResource("2_5gf0t")
+
+[node name="Background" type="Parallax2D" parent="MainMenu" unique_id=745440995]
 repeat_size = Vector2(16, 16)
 repeat_times = 20
 follow_viewport = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=2075785101]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background" unique_id=794533567]
 texture = ExtResource("5_j62u1")
 region_enabled = true
 region_rect = Rect2(64, 16, 16, 16)
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
-unique_name_in_owner = true
-position = Vector2(9, 32)
-collision_mask = 3
-slide_on_ceiling = false
-platform_on_leave = 2
-platform_floor_layers = 4294967040
-script = ExtResource("2_5gf0t")
-speed = 2500.0
+[node name="Title" type="Label" parent="MainMenu" unique_id=1352669937]
+offset_left = -57.0
+offset_top = -25.0
+offset_right = 173.0
+offset_bottom = 7.0
+text = "Short-Range Robot"
+label_settings = SubResource("LabelSettings_wfsp4")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1073083698]
-sprite_frames = SubResource("SpriteFrames_5aext")
-animation = &"Dead"
-autoplay = "IdleFront"
+[node name="StartButton" type="Button" parent="MainMenu" unique_id=53734687]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 21.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_3w2km")
+theme_override_font_sizes/font_size = 8
+text = "Start"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1888433669]
-position = Vector2(0, -2)
-scale = Vector2(1.2240393, 1.1262527)
-shape = SubResource("CapsuleShape2D_5aext")
-
-[node name="ShootTimer" type="Timer" parent="Player" unique_id=1387723270]
-wait_time = 0.25
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2031492511]
-zoom = Vector2(7, 7)
-
-[node name="Enemy" type="CharacterBody2D" parent="." unique_id=666826409]
-unique_name_in_owner = true
-position = Vector2(8, -19)
-collision_layer = 6
-collision_mask = 5
-slide_on_ceiling = false
-platform_on_leave = 2
-platform_floor_layers = 4294967040
-platform_wall_layers = 65280
-script = ExtResource("5_5aext")
-health = 100
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=537977992]
-sprite_frames = SubResource("SpriteFrames_3w2km")
-animation = &"IdleFront"
-autoplay = "IdleFront"
-frame = 1
-frame_progress = 0.46612114
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=861771111]
-visible = false
-scale = Vector2(1.2240393, 1.1262527)
-shape = SubResource("RectangleShape2D_5aext")
-
-[node name="ShootTimer" type="Timer" parent="Enemy" unique_id=1028357147]
-wait_time = 0.1
-autostart = true
-
-[node name="Label" type="Label" parent="Enemy" unique_id=1868894294]
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 66.0
-offset_bottom = 14.0
-scale = Vector2(0.1, 0.1)
-text = "Health: 3"
-label_settings = SubResource("LabelSettings_5aext")
-
-[node name="MoveTimer" type="Timer" parent="Enemy" unique_id=156837261]
-
-[node name="SwitchTimer" type="Timer" parent="Enemy" unique_id=1131888834]
-wait_time = 3.0
-one_shot = true
-
-[node name="LeftGun" type="Node2D" parent="Enemy" unique_id=599719766]
-position = Vector2(-6, 4)
-
-[node name="RightGun" type="Node2D" parent="Enemy" unique_id=1743327105]
-position = Vector2(6, 4)
-
-[node name="Controller" type="CharacterBody2D" parent="." unique_id=331929211]
-unique_name_in_owner = true
-position = Vector2(-26, 7)
-collision_layer = 2
-collision_mask = 2
-slide_on_ceiling = false
-platform_on_leave = 2
-platform_floor_layers = 4294967040
-script = ExtResource("6_5aext")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Controller" unique_id=827638811]
-sprite_frames = SubResource("SpriteFrames_j62u1")
-animation = &"IdleFront"
-autoplay = "IdleFront"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Controller" unique_id=2119981559]
-scale = Vector2(1.2240393, 1.1262527)
-shape = SubResource("RectangleShape2D_5aext")
-
-[node name="MoveTimer" type="Timer" parent="Controller" unique_id=1160695199]
-wait_time = 0.5
-one_shot = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=359879348]
-position = Vector2(0, 46)
-collision_layer = 255
-collision_mask = 255
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=411228974]
-shape = SubResource("WorldBoundaryShape2D_5aext")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=306260774]
-position = Vector2(-83, 1)
-rotation = 1.5707964
-collision_layer = 255
-collision_mask = 255
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=541201017]
-shape = SubResource("WorldBoundaryShape2D_5aext")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1513944830]
-position = Vector2(83, 2)
-rotation = 4.712389
-collision_layer = 255
-collision_mask = 255
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=119785049]
-shape = SubResource("WorldBoundaryShape2D_5aext")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=804344820]
-position = Vector2(0, -46)
-rotation = 3.1415927
-collision_layer = 255
-collision_mask = 255
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=113079340]
-shape = SubResource("WorldBoundaryShape2D_5aext")
-
-[node name="HealthBar" parent="." unique_id=1516574594 instance=ExtResource("4_cb5na")]
+[node name="Static" type="Sprite2D" parent="MainMenu" unique_id=1697194861]
 unique_name_in_owner = true
 z_index = 4096
-position = Vector2(-77, -42)
-scale = Vector2(0.5, 0.5)
-
-[node name="Static" type="Sprite2D" parent="." unique_id=958981988]
-unique_name_in_owner = true
-z_index = 4096
-material = SubResource("ShaderMaterial_3w2km")
+material = SubResource("ShaderMaterial_j62u1")
 position = Vector2(-3, 3)
 scale = Vector2(500, 500)
 texture = ExtResource("5_j62u1")
 region_enabled = true
 region_rect = Rect2(49.162178, 27.249664, 0.5423317, 0.44189835)
 
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1097482171]
-unique_name_in_owner = true
-
-[node name="AudioPlayer2" type="AudioStreamPlayer2D" parent="." unique_id=1269924424]
-unique_name_in_owner = true
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1985871559]
+zoom = Vector2(7, 7)
