@@ -176,6 +176,16 @@ shader_parameter/noise_intensity = 0.0
 
 [node name="Game" type="Node2D" unique_id=1670098701]
 
+[node name="Background" type="Parallax2D" parent="." unique_id=1873950338]
+repeat_size = Vector2(16, 16)
+repeat_times = 20
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=2075785101]
+texture = ExtResource("5_j62u1")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1974626050]
 unique_name_in_owner = true
 position = Vector2(9, 32)
