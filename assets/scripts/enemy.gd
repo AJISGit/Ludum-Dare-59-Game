@@ -51,7 +51,7 @@ var aim_shot: int = 0
 
 func aim_phase():
 
-	if aim_shot > 75:
+	if aim_shot > 60:
 		aim_shot = 0
 		switch_phase(phase)
 		return
@@ -62,7 +62,7 @@ func aim_phase():
 	var bullet: Bullet = BULLET_RESOURCE.instantiate()
 	bullet.hit.connect(_on_bullet_hit)
 	bullet.position = $RightGun.global_position
-	bullet.speed = 75
+	bullet.speed = 50
 	bullet.look_at(%Player.position) 
 	$"../".add_child(bullet)
 
@@ -71,7 +71,7 @@ func aim_phase():
 	var bullet2: Bullet = BULLET_RESOURCE.instantiate()
 	bullet2.hit.connect(_on_bullet_hit)
 	bullet2.position = $LeftGun.global_position
-	bullet2.speed = 75
+	bullet2.speed = 50
 	bullet2.look_at(%Player.position) 
 	bullet2.rotation_degrees += 30
 	$"../".add_child(bullet2)
@@ -81,7 +81,7 @@ func aim_phase():
 	var bullet3: Bullet = BULLET_RESOURCE.instantiate()
 	bullet3.hit.connect(_on_bullet_hit)
 	bullet3.position = $RightGun.global_position
-	bullet3.speed = 75
+	bullet3.speed = 50
 	bullet3.look_at(%Player.position) 
 	bullet3.rotation_degrees -= 30
 	$"../".add_child(bullet3)
