@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
 [ext_resource type="Script" uid="uid://cuaied3rqqqkk" path="res://assets/scripts/lose_menu.gd" id="6_5aext"]
 [ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_3w2km"]
+[ext_resource type="AudioStream" uid="uid://ql5r5dgcbinn" path="res://assets/music/rins-theme_full.ogg" id="7_wfsp4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfsp4"]
 font = ExtResource("4_3w2km")
@@ -112,3 +113,9 @@ text = "Back to Menu"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1985871559]
 zoom = Vector2(7, 7)
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1848082223]
+unique_name_in_owner = true
+stream = ExtResource("7_wfsp4")
+autoplay = true
+parameters/looping = true
