@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://claux1w5paxry" path="res://assets/scripts/main_menu.gd" id="2_5gf0t"]
 [ext_resource type="FontFile" uid="uid://bk4r7qj4iv3p6" path="res://assets/fonts/Acme 9 Regular.ttf" id="4_3w2km"]
 [ext_resource type="Texture2D" uid="uid://b7ggahliwfn30" path="res://assets/sprites/spritesheet.png" id="5_j62u1"]
+[ext_resource type="Script" uid="uid://cuaied3rqqqkk" path="res://assets/scripts/lose_menu.gd" id="6_5aext"]
 [ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_3w2km"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfsp4"]
@@ -57,6 +58,57 @@ scale = Vector2(500, 500)
 texture = ExtResource("5_j62u1")
 region_enabled = true
 region_rect = Rect2(49.162178, 27.249664, 0.5423317, 0.44189835)
+
+[node name="LoseMenu" type="Node" parent="." unique_id=1372129128]
+unique_name_in_owner = true
+script = ExtResource("6_5aext")
+
+[node name="Title" type="Label" parent="LoseMenu" unique_id=568788524]
+process_mode = 2
+visible = false
+offset_left = -26.0
+offset_top = -25.0
+offset_right = 204.0
+offset_bottom = 7.0
+text = "You Lose"
+label_settings = SubResource("LabelSettings_wfsp4")
+
+[node name="StartButton" type="Button" parent="LoseMenu" unique_id=1370656950]
+process_mode = 2
+visible = false
+offset_left = -44.0
+offset_top = -4.0
+offset_right = 46.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_3w2km")
+theme_override_font_sizes/font_size = 8
+text = "Back to Menu"
+
+[node name="WinMenu" type="Node" parent="." unique_id=4870882]
+unique_name_in_owner = true
+script = ExtResource("6_5aext")
+
+[node name="Title" type="Label" parent="WinMenu" unique_id=1419920874]
+process_mode = 2
+visible = false
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 207.0
+offset_bottom = 10.0
+text = "You Win
+"
+label_settings = SubResource("LabelSettings_wfsp4")
+
+[node name="StartButton" type="Button" parent="WinMenu" unique_id=1284114462]
+process_mode = 2
+visible = false
+offset_left = -44.0
+offset_top = -4.0
+offset_right = 46.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_3w2km")
+theme_override_font_sizes/font_size = 8
+text = "Back to Menu"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1985871559]
 zoom = Vector2(7, 7)

@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 
 	if health <= 0:
 		get_tree().paused = true
+		$"../../LoseMenu/Title".visible = true
+		$"../../LoseMenu/StartButton".visible = true
 
 	health_bar.update_icons(health, max_health)
 	

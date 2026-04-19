@@ -201,6 +201,10 @@ func _process(_delta: float) -> void:
 
 	$Label.text = "Health: " + str(health)
 	if health <= 0:
+		
+		get_tree().paused = true
+		$"../../WinMenu/Title".visible = true
+		$"../../WinMenu/StartButton".visible = true
 		queue_free()
 
 func _physics_process(_delta: float) -> void:
