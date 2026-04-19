@@ -150,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if (state != player_state.frozen):
-		%Static.get_material().set_shader_parameter("noise_intensity", distance / 125.0)
+		%Static.get_material().set_shader_parameter("noise_intensity", distance / 100.0)
 
 
 

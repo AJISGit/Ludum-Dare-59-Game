@@ -5,7 +5,7 @@ const BULLET_RESOURCE: PackedScene = preload("res://assets/scenes/enemy_bullet_1
 
 @export var health = 3
 
-enum shoot_phase {cshoot, aim, chaos}
+enum shoot_phase {cshoot, aim, chaos, double_aim}
 
 var phase: shoot_phase = randi_range(0, 2) as shoot_phase 
 var can_shoot: bool = true
@@ -122,6 +122,60 @@ func chaos_phase():
 	chaos_dir2 -= 15
 
 
+# Double Aim
+var double_aim_shot: int = 0
+
+func double_aim_phase():
+
+	if double_aim_shot > 60:
+		double_aim_shot = 0
+		switch_phase(phase)
+		return
+
+
+
+	$ShootTimer.wait_time = 0.35
+	var bullet: Bullet = BULLET_RESOURCE.instantiate()
+	bullet.hit.connect(_on_bullet_hit)
+	bullet.position = $LeftGun.global_position
+	bullet.speed = 50
+	bullet.look_at(%Player.position) 
+	bullet.rotation_degrees += 20
+	$"../".add_child(bullet)
+
+
+
+	var bullet2: Bullet = BULLET_RESOURCE.instantiate()
+	bullet2.hit.connect(_on_bullet_hit)
+	bullet2.position = $LeftGun.global_position
+	bullet2.speed = 50
+	bullet2.look_at(%Player.position) 
+	bullet2.rotation_degrees -= 20
+	$"../".add_child(bullet2)
+
+
+
+	var bullet3: Bullet = BULLET_RESOURCE.instantiate()
+	bullet3.hit.connect(_on_bullet_hit)
+	bullet3.position = $RightGun.global_position
+	bullet3.speed = 50
+	bullet3.look_at(%Player.position) 
+	bullet3.rotation_degrees += 20
+	$"../".add_child(bullet3)
+
+
+	var bullet4: Bullet = BULLET_RESOURCE.instantiate()
+	bullet4.hit.connect(_on_bullet_hit)
+	bullet4.position = $RightGun.global_position
+	bullet4.speed = 50
+	bullet4.look_at(%Player.position) 
+	bullet4.rotation_degrees -= 20
+	$"../".add_child(bullet4)
+
+
+	double_aim_shot += 1
+
+
 
 func _on_move_timer_timeout():
 	move_timer.wait_time = randf_range(0.0, 2.0)
@@ -170,6 +224,8 @@ func _on_shoot_timer_timeout():
 		aim_phase()
 	elif phase == shoot_phase.chaos:
 		chaos_phase()
+	elif phase == shoot_phase.double_aim:
+		double_aim_phase()
 
 
 func _ready() -> void:
@@ -199,7 +255,7 @@ func _process(_delta: float) -> void:
 		velocity.y = 0
 
 
-	$Label.text = "Health: " + str(health)
+	$"../Label".text = "Boss Health: " + str(health)
 	if health <= 0:
 		
 		get_tree().paused = true

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c0ppcyvuimj81" path="res://assets/scripts/controller.gd" id="5_nwww1"]
 [ext_resource type="PackedScene" uid="uid://ducqxpi7obstd" path="res://assets/scenes/health_bar.tscn" id="6_7e3sx"]
 [ext_resource type="Shader" uid="uid://pssc32lcryy0" path="res://assets/shaders/static.gdshader" id="7_67jys"]
+[ext_resource type="PackedScene" uid="uid://cbjkb715vmubv" path="res://assets/scenes/scrap_spawner.tscn" id="8_0kt67"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jdip"]
 atlas = ExtResource("1_tjd8y")
@@ -145,9 +146,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vulla"]
 size = Vector2(13.071476, 15.982206)
 
-[sub_resource type="LabelSettings" id="LabelSettings_71pkm"]
-font = ExtResource("4_68jgb")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3w2km"]
 atlas = ExtResource("1_tjd8y")
 region = Rect2(0, 22, 11, 11)
@@ -176,6 +174,9 @@ animations = [{
 shader = ExtResource("7_67jys")
 shader_parameter/noise_intensity = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_71pkm"]
+font = ExtResource("4_68jgb")
+
 [node name="Level" type="Node2D" unique_id=866085146]
 
 [node name="Background" type="Parallax2D" parent="." unique_id=1736174746]
@@ -197,6 +198,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("2_0kt67")
 speed = 2500.0
+max_distance = 75.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=794286745]
 sprite_frames = SubResource("SpriteFrames_2b6ly")
@@ -214,6 +216,7 @@ one_shot = true
 
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=1933547170]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(8, -19)
 collision_layer = 6
 collision_mask = 5
@@ -222,7 +225,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 platform_wall_layers = 65280
 script = ExtResource("3_lka7q")
-health = 100
+health = 500
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=1850366620]
 sprite_frames = SubResource("SpriteFrames_t33da")
@@ -237,16 +240,6 @@ shape = SubResource("RectangleShape2D_vulla")
 [node name="ShootTimer" type="Timer" parent="Enemy" unique_id=1098104455]
 wait_time = 0.1
 autostart = true
-
-[node name="Label" type="Label" parent="Enemy" unique_id=1852766750]
-offset_left = -5.0
-offset_top = -11.0
-offset_right = 103.0
-offset_bottom = 21.0
-scale = Vector2(0.08, 0.08)
-text = "Health: 3"
-label_settings = SubResource("LabelSettings_71pkm")
-metadata/_edit_use_anchors_ = true
 
 [node name="MoveTimer" type="Timer" parent="Enemy" unique_id=1701889231]
 
@@ -339,3 +332,15 @@ unique_name_in_owner = true
 
 [node name="AudioPlayer2" type="AudioStreamPlayer2D" parent="." unique_id=736464883]
 unique_name_in_owner = true
+
+[node name="ScrapSpawner" parent="." unique_id=970138384 instance=ExtResource("8_0kt67")]
+
+[node name="Label" type="Label" parent="." unique_id=1852766750]
+offset_left = -25.0
+offset_top = -43.0
+offset_right = 151.0
+offset_bottom = -11.0
+scale = Vector2(0.3, 0.3)
+text = "Boss Health: 3"
+label_settings = SubResource("LabelSettings_71pkm")
+metadata/_edit_use_anchors_ = true

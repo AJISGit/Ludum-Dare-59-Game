@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cbjkb715vmubv"]
+
+[ext_resource type="Script" uid="uid://cdmvutkejflni" path="res://assets/scripts/scrap_spawner.gd" id="1_2kwop"]
+
+[node name="ScrapSpawner" type="Node" unique_id=970138384]
+script = ExtResource("1_2kwop")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=2137944643]
+wait_time = 0.001
+autostart = true
